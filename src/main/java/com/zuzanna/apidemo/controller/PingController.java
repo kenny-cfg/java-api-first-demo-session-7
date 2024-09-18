@@ -20,6 +20,13 @@ public class PingController {
         return poobum;
     }
 
+    @GetMapping("variable/{variable}")
+    public String pingWithVariable(
+            @PathVariable String variable
+    ) {
+        return "Your variable was: " + variable;
+    }
+
     @PostMapping("echo")
     public ResponseEntity<PingResponse> echo(
             @RequestBody PingRequest pingRequest
