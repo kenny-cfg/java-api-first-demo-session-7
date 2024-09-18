@@ -13,4 +13,11 @@ public class PingController {
         response.setMessage("Moge is cool!");
         return response;
     }
+
+    @RequestMapping(path = "/ping/ping", method = RequestMethod.GET)
+    public PingResponse pingPing() {
+        var response = new PingResponse();
+        response.setMessage("Everyone is ace!");
+        return response;
+    }
 }
