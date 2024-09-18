@@ -12,6 +12,15 @@ public class PingController {
         return response;
     }
 
+    @PostMapping("echo")
+    public PingResponse echo(
+            @RequestBody PingRequest pingRequest
+    ) {
+        var response = new PingResponse();
+        response.setMessage("You greeted me with: " + pingRequest.getGreeting());
+        return response;
+    }
+
     @GetMapping("second")
     public PingResponse pingPing() {
         var response = new PingResponse();
