@@ -1,5 +1,6 @@
 package com.zuzanna.apidemo.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,12 +14,15 @@ public class PingController {
     }
 
     @PostMapping("echo")
-    public PingResponse echo(
+    public ResponseEntity<PingResponse> echo(
             @RequestBody PingRequest pingRequest
     ) {
+        if (pingRequest.getGreeting() == null) {
+            return ResponseEntity.notFound().build();
+        }
         var response = new PingResponse();
         response.setMessage("You greeted me with: " + pingRequest.getGreeting());
-        return response;
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("second")
