@@ -13,6 +13,13 @@ public class PingController {
         return response;
     }
 
+    @GetMapping("header")
+    public String pingHeader(
+            @RequestHeader String poobum
+    ) {
+        return poobum;
+    }
+
     @PostMapping("echo")
     public ResponseEntity<PingResponse> echo(
             @RequestBody PingRequest pingRequest
