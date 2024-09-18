@@ -27,6 +27,13 @@ public class PingController {
         return "Your variable was: " + variable;
     }
 
+    @GetMapping("query")
+    public String pingWithQuery(
+            @RequestParam String queryVariable
+    ) {
+        return "You variable was: " + queryVariable;
+    }
+
     @PostMapping("echo")
     public ResponseEntity<PingResponse> echo(
             @RequestBody PingRequest pingRequest
