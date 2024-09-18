@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 public class PingController {
     @GetMapping("first")
     public PingResponse ping() {
-        var response = new PingResponse();
-        response.setMessage("Moge is cool!");
-        return response;
+        return PingResponse
+                .builder()
+                .message("Moge is cool!")
+                .build();
     }
 
     @GetMapping("header")
@@ -41,15 +42,17 @@ public class PingController {
         if (pingRequest.getGreeting() == null) {
             return ResponseEntity.notFound().build();
         }
-        var response = new PingResponse();
-        response.setMessage("You greeted me with: " + pingRequest.getGreeting());
+        var response = PingResponse.builder()
+                .message("You greeted me with: " + pingRequest.getGreeting())
+                .build();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("second")
     public PingResponse pingPing() {
-        var response = new PingResponse();
-        response.setMessage("Everyone is ace!");
-        return response;
+        return PingResponse.builder()
+                .message("first message")
+                .secondMessage("second message")
+                .build();
     }
 }

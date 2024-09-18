@@ -1,13 +1,11 @@
 package com.zuzanna.apidemo.controller;
 
+import lombok.Builder;
+import lombok.Getter;
+
+@Builder
+@Getter
 public class PingResponse {
     private String message;
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    private String secondMessage;
 }
